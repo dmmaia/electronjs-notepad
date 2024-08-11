@@ -1,0 +1,23 @@
+{
+  "name": "electronjs-notepad",
+  "version": "1.0.0",
+  "description": "a simple notepad created with js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dmmaia/electronjs-notepad.git"
+  },
+  "author": "David Maia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmmaia/electronjs-notepad/issues"
+  },
+  "homepage": "https://github.com/dmmaia/electronjs-notepad#readme",
+  "devDependencies": {
+    "electron": "^31.3.1"
+  }
+}
