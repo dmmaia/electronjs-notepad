@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 const path = require('path');
 
 let mainWIndow = null;
@@ -7,7 +7,10 @@ let childWindow = null;
 const createWindow = () => {
   mainWIndow = new BrowserWindow({
     width: 800,
-    height: 600
+    height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
   })
   mainWIndow.loadFile('templates/index.html')
 }
@@ -19,6 +22,9 @@ async function createPrefWindow() {
     minimizable: false,
     maximizable: false,
     parent: mainWIndow,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
   })
   childWindow.webContents.on('dom-ready', () => {
     childWindow.show();
@@ -49,9 +55,17 @@ const template = [
   }
 ]
 
+function changePreferences(event, data) {
+  const { size, color, font } = data
+  if (mainWIndow) {
+    mainWIndow.webContents.insertCSS(`#content{ font-size: ${size}px; color: ${color}; font-family:${font} }`)
+  }
+}
+
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
 
 app.whenReady().then(() => {
+  ipcMain.on("change-preferences", changePreferences)
   createWindow()
 })

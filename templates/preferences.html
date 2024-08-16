@@ -16,17 +16,27 @@
     </div>
     <div>
       <label>Font Family:</label>
-      <input type="" name="family" value="">
+      <select id="f-font" type="select" name="family" value="Arial, sans-serif">
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="Times New Roman, serif">Times New Roman</option>
+        <option value="Verdana, sans-serif">Verdana</option>
+        <option value="Tahoma, sans-serif">Tahoma</option>
+        <option value="Trebuchet, sans-serif">Trebuchet</option>
+        <option value="Georgia, serif">Georgia</option>
+        <option value="Garamond, serif">Garamond</option>
+        <option value="Courier New, monospace">Courier New</option>
+        <option value="Brush Script MT, cursive">Brush Script MT</option>
+      </select>
     </div>
     <div>
-      <label>Font Color:</label>
-      <input type="" name="color" value="">
+      <!--<label>Font Color:</label>
+<input type="" name="color" value="">-->
     </div>
   </div>
   <div class="buttons">
-    <button type="button" onclick="changeByPrefWindow">Save</button>
-    <button type="button">Exit</button>
+    <button type="button" id="save-button">Save</button>
   </div>
 </body>
+<script src="../pref.js"></script>
 
 </html>
